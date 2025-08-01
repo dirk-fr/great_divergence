@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Great Divergence</title>
+    <style>
+        /* --- General & Dark Theme Styles --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.7;
+            background-color: #000000;
+            color: #E0E0E0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            margin-left: 280px; /* Space for nav pane */
+        }
+        
+        h2, h3, h4 {
+            color: #F5F5F5;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-top: 50px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+        h3 {
+            font-size: 1.5em;
+            margin-top: 40px;
+            color: #58A6FF; /* Accent blue for sub-headers */
+        }
+        
+        h4 {
+            font-size: 1.2em;
+        }
+        
+        a {
+            color: #58A6FF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Hero Image & Title Section --- */
+        .hero-header {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .hero-header img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+        .hero-text {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .hero-text h1 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 3.5em;
+            font-weight: 500;
+            margin: 0;
+            color: white;
+        }
+        .hero-text .subtitle {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 1.4em;
+            margin-top: 10px;
+            font-weight: 300;
+            color: #AAAAAA;
+        }
+        
+        /* --- Engagement Enhancements --- */
+        .takeaways-box {
+            background-color: #1C1C1C;
+            border: 1px solid #58A6FF;
+            border-radius: 8px;
+            padding: 10px 25px;
+            margin: 40px 0;
+        }
+        .takeaways-box h3 {
+            margin-top: 15px;
+            color: #F5F5F5;
+        }
+        .takeaways-box ul {
+            padding-left: 20px;
+        }
+        .takeaways-box li {
+            margin-bottom: 10px;
+        }
+        
+        .pull-quote {
+            border-left: 4px solid #FFA500;
+            margin: 30px 10%;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            font-style: italic;
+            color: #CCCCCC;
+        }
+
+        .scenario-image-embedded {
+            width: 280px;
+            float: right;
+            margin-left: 25px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        
+        .barbell-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .barbell-weight {
+            background-color: #444;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .barbell-weight.large {
+            padding: 30px 20px;
+        }
+        .barbell-bar {
+            height: 8px;
+            width: 100px;
+            background-color: #666;
+        }
+        .barbell-label {
+            font-size: 0.9em;
+            color: #AAAAAA;
+            margin-top: 5px;
+        }
+        
+        .poll-placeholder {
+            border: 2px dashed #444;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin: 30px 0;
+            color: #AAAAAA;
+        }
+        
+        /* --- Table Styles --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            background-color: #1A1A1A;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 14px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #252525;
+            font-weight: bold;
+            color: #F5F5F5;
+            line-height: 1.4;
+        }
+        caption {
+            caption-side: bottom;
+            font-size: 0.9em;
+            color: #AAAAAA;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        td:first-child strong {
+            color: #FFA500; /* Amber for Row Headers */
+        }
+        .sub-heading {
+            color: #58A6FF; /* Blue for Sub-headings */
+            font-weight: bold;
+        }
+        
+        /* --- Navigation & Responsive Styles --- */
+        .navigation-pane {
+            position: fixed;
+            top: 40px;
+            left: 20px;
+            width: 220px;
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+            background: #1C1C1C;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        .navigation-pane h4 { margin-top: 0; font-size: 1.1em; color: #F5F5F5; border-bottom: 1px solid #444; padding-bottom: 8px; }
+        .navigation-pane ul { list-style-type: none; padding: 0; margin: 0; }
+        .navigation-pane ul li a { color: #E0E0E0; display: block; padding: 8px 0 8px 5px; border-bottom: 1px solid #333; font-size: 0.95em; transition: all 0.2s ease-in-out; }
+        .navigation-pane ul li a:hover { background-color: #282828; padding-left: 10px; color: white; text-decoration: none; }
+        .navigation-pane ul ul { padding-left: 15px; }
+        .navigation-pane ul ul li a { font-size: 0.9em; color: #AAAAAA; }
+
+        @media (max-width: 1200px) {
+            .navigation-pane { display: none; }
+            .content-wrapper { margin-left: auto; margin-right: auto; padding: 20px; }
+            .hero-text h1 { font-size: 2.5em; }
+            .hero-text .subtitle { font-size: 1.1em; }
+        }
+        @media (max-width: 768px) {
+            .scenario-image-embedded {
+                float: none;
+                width: 100%;
+                margin-left: 0;
+                margin-bottom: 20px;
+            }
+        }
+        @media (max-width: 600px) {
+            .hero-text h1 { font-size: 2em; }
+            .pull-quote { margin: 30px 0; }
+        }
+
+        .author-box {
+            background-color: #1C1C1C;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 60px 0 40px 0;
+            display: flex;
+            align-items: center;
+            border: 1px solid #333;
+        }
+        .author-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .author-info h4 {
+            margin: 0 0 10px 0;
+            color: #F5F5F5;
+        }
+        .author-info p {
+            margin: 0;
+            color: #AAAAAA;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navigation-pane">
+        <h4>Table of Contents</h4>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#three-scenarios">The Three Scenarios</a>
+                <ul>
+                    <li><a href="#scenario-boom">1. The Boom</a></li>
+                    <li><a href="#scenario-bust">2. The Bust</a></li>
+                    <li><a href="#scenario-balance">3. The Balance</a></li>
+                </ul>
+            </li>
+            <li><a href="#predict-future">Can We Predict the Future?</a></li>
+            <li><a href="#observe-future">How to Observe the Future</a></li>
+            <li><a href="#probabilities">Probabilities</a></li>
+            <li><a href="#winners-losers">Winners and Losers</a>
+                <ul>
+                    <li><a href="#investment-themes">Investment Themes</a></li>
+                    <li><a href="#one-world">One World, One Portfolio?</a></li>
+                    <li><a href="#getting-it-done">Getting It Done</a></li>
+                </ul>
+            </li>
+            <li><a href="#dynamism">Dynamism</a></li>
+            <li><a href="#fin">Fin.</a></li>
+            <li><a href="#appendix">Appendix</a></li>
+        </ul>
+    </nav>
+
+    <div class="content-wrapper">
+        <header>
+            <div class="hero-header">
+                <img src="Images/great_divergence_hero.jpg" alt="An AI-generated image showing the divergence of a robotic face and a human face.">
+            </div>
+            <div class="hero-text">
+                <h1>The Great Divergence</h1>
+                <div class="subtitle">An Investor's Guide to an AI-Dominated World</div>
+            </div>
+        </header>
+
+        <main>
+            <h3 id="introduction">Introduction</h3>
+        
+            <p>Will AI take your job, make you incredibly wealthy, or crash the global economy? This isn't just a hypothetical question for the distant future; it's the central investment question of our time. I call it <strong>The Great Divergence</strong>.</p>
+            <p>To navigate it, we need a framework for three possible futures: a "Boom," a "Bust," or a "Balance." This blog post is inspired by the cover story of the July 2025 edition of The Economist, "<a href="https://www.economist.com/leaders/2025/07/24/the-economics-of-superintelligence" target="_blank" rel="noopener noreferrer">The Economics of Superintelligence</a>." <a href="#source-1">[1]</a> Here’s my take on how to think about these scenarios, and more importantly, how to position yourself for what's coming. While none of what follows is financial advice, I share my thought process in the hope it might benefit others who feel this duality of being absolutely amazed by what's possibly ahead of us, while simultaneously having a healthy respect for a future with maybe life-changing disruption.</p>
+
+            <div class="takeaways-box">
+                <h3>Key Takeaways: Navigating the Great Divergence</h3>
+                <ul>
+                    <li><strong>Three Futures:</strong> AI will likely lead to one of three scenarios: a hyper-productive "Boom," a chaotic "Bust," or a manageable "Balance."</li>
+                    <li><strong>Watch the Indicators:</strong> Don't just guess. Track concrete signals like AI-led scientific discoveries and specific inflation patterns to see which future is unfolding.</li>
+                    <li><strong>The Barbell Strategy:</strong> Since the future is uncertain, the most robust investment strategy is a "barbell"—a diversified core for the "Balance" scenario, with smaller, targeted bets on the "Boom" (e.g., AI leaders) and the "Bust" (e.g., hard assets).</li>
+                </ul>
+            </div>
+        
+            <h3 id="three-scenarios">The Three Scenarios</h3>
+            
+            <p>Will we face a scenario in which AI surpasses human cognitive abilities, self-improves and automates discovery itself, leading to an unprecedented economic boom? Would chaotic socio-political fallout be the consequence? Or are we going to experience a powerful, evolutionary force, more like the Internet than an instantaneous revolution? Each has different winners and losers, which is why I call it "The Great Divergence."</p>
+            
+            <h4 id="scenario-boom">Scenario 1: The Supercharged Growth, a.k.a. the "Boom"</h4>
+            <img src="Images/boom.png" alt="A city skyline with data streams shooting upwards, representing a boom" class="scenario-image-embedded">
+            <p>In this scenario, as per The Economist, AI achieves Super-intelligence, becoming better than humans at pretty much all cognitive tasks. This ignites an explosion of economic growth, potentially exceeding 20% annually, driven by AI autonomously making technological discoveries. As a result, the cost of anything AI can produce (from digital entertainment to factory goods) collapses. Also, this devalues most human labor, leading to a massive wealth transfer to the "owners of relevant capital."</p>
+            <p>For this to happen, a couple of things need to be true:</p>
+            <ul>
+                <li>AI must become capable of autonomous technological discovery without significant human input.</li>
+                <li>Computing power must continue to scale and be the primary input for this AI-driven discovery. Alternatively, a shift from the current LLM architecture to something like Yann LeCun's JEPA (Joint Embedding Predictive Architecture) would have to happen, possibly mitigating the need for bigger scale. <a href="#source-2">[2]</a></li>
+                <li>A "winner-take-all" dynamic must play out, with a few corporations or nations dominating the AI landscape.</li>
+            </ul>
+
+            <h4 id="scenario-bust">Scenario 2: The Macroeconomic Instability, a.k.a. the "Bust"</h4>
+            <img src="Images/bust.png" alt="A city skyline with a crashing stock chart, representing a bust" class="scenario-image-embedded">
+            <p>Once the supercharged growth reality sets in, the anticipation of immense future wealth would cause people to "binge" on spending, igniting massive inflation. Central banks fail to react quickly enough. Soaring inequality between the capital-owning class and the rest of the population leads to intense political pressure for redistribution, creating a volatile and unpredictable political environment. The article warns that "politics would therefore be volatile" and mentions the risk of capital flight from countries unable to manage the transition.</p>
+            <p>This scenario is contingent on The Boom unfolding first, therefore we'd expect to see the following prerequisites being in place:</p>
+            <ul>
+                <li>The Supercharged Growth Scenario must begin to materialize.</li>
+                <li>Human consumer behavior must be forward-looking, leading to a spending boom before the supply of goods and services fully adjusts.</li>
+                <li>Central banks and governments must fail to manage the resulting inflation and social tensions effectively.</li>
+            </ul>
+
+            <h4 id="scenario-balance">Scenario 3: The Muddle Through, a.k.a. the "Balance"</h4>
+            <img src="Images/balance.png" alt="A human face and a robot face in profile, representing balance" class="scenario-image-embedded">
+            <p>In Economics it's often a reasonable assumption that the near future looks a lot like the recent past, which is what we'll go with here: AI continues to make people's lives easier on a personal level and will continue to creep into the business world one application or platform at a time, but won't trigger a Cambrian explosion of intelligence. This would lead to a much more moderate annual growth of maybe 2-5% GDP for the foreseeable future.</p>
+            <p>So what would have to happen for the world to conserve the status-quo?</p>
+            <ul>
+                <li>AI develops as augmentation, not as autonomous replacement, enhancing human skills rather than making human cognition obsolete.</li>
+                <li>The economic benefits from AI-driven productivity are broad based, not captured by a tiny fraction of capital owners. This would happen through higher wages for "augmented" jobs, effective tax and transfer policies, or other ways to prevent the extreme rise in inequality.</li>
+                <li>Governments and regulatory bodies must successfully navigate a middle path, creating policies that foster innovation while managing risks like job displacement and privacy concerns.</li>
+            </ul>
+
+            <h3 id="predict-future">Can we predict the future?</h3>
+
+            <blockquote class="pull-quote">
+                In the absence of a crystal ball, we'll have to approach this differently if we want to position ourselves for a favorable outcome, independent of us being right or wrong.
+            </blockquote>
+        
+            <p>Fortunately, we won't wake up one morning and one of the scenarios has materialized over night. Certain things need to become true and happen in a certain sequence. Think of it as a series of dominos. The approach of asking "what would a future in which X is true look like?" is a powerful tool I first came across in the book "Shocks, Crisis and False Alarms" by Philipp Carlsson-Szlezak. </p>
+            
+            <h3 id="observe-future">How to observe the future unfolding</h3>
+            <p>Now we have an idea of the things we need to watch for. Let's look at some directly observable indicators—early warning signs—that would validate a scenario unfolding.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Scenario 1:<br>Supercharged Growth</th>
+                        <th>Scenario 2:<br>Macroeconomic Instability</th>
+                        <th>Scenario 3:<br>The Muddle Through</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Core Idea</strong></td>
+                        <td>AI achieves autonomy, driving a >20% annual growth explosion. Wealth concentrates in the hands of capital owners.</td>
+                        <td>The chaotic fallout from the growth boom. Anticipation and inequality fuel hyperinflation, political volatility, and social unrest.</td>
+                        <td>AI is a powerful but evolutionary tool, like the internet. It drives solid, manageable productivity gains (2-4% GDP growth). Society adapts gradually.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>What Needs to Be True?</strong></td>
+                        <td>1. AI capable of autonomous discovery.<br>2. Computing power scales exponentially.<br>3. A few "winner-take-all" firms dominate.</td>
+                        <td>1. Scenario 1 begins to unfold.<br>2. Central banks are "behind the curve."<br>3. Democratic systems fail to manage inequality peacefully.</td>
+                        <td>1. AI enhances, but does not fully replace, human cognition.<br>2. Gains are distributed broadly enough to avoid social collapse.<br>3. Policy and regulation adapt.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Confirming Indicators & Data Sources</strong></td>
+                        <td><span class="sub-heading">Technological Breakthroughs:</span> An AI wins a Nobel/Fields Prize. Sources: Official prize committees, major news outlets.<br><span class="sub-heading">Productivity Boom:</span> Sustained Total Factor Productivity (TFP) growth > 4%. Sources: OECD Productivity Statistics, US Bureau of Labor Statistics (BLS), Eurostat.<br><span class="sub-heading">Capital's Rising Share:</span> Capital income share of GDP rises sharply. Sources: Eurostat, Destatis (Germany), AMECO database.<br><span class="sub-heading">Price Divergence:</span> Deflation in tech goods, high inflation in manual services. Sources: Eurostat HICP (Harmonised Index), Destatis CPI sub-indices.</td>
+                        <td><span class="sub-heading">Runaway Inflation:</span> Sustained headline inflation > 7%. Sources: Eurostat (HICP for Eurozone), Destatis (CPI for Germany), US BLS.<br><span class="sub-heading">Consumption Binge:</span> Consumer debt spikes and household savings rate plummets. Sources: European Central Bank (ECB) & Deutsche Bundesbank statistics, US Federal Reserve (G.19).<br><span class="sub-heading">Social & Political Unrest:</span> Rising frequency of protests/strikes over inequality; rise of populist parties. Sources: Major news reports, polling firms, ACLED project data.<br><span class="sub-heading">Central Bank Panic:</span> Emergency, large-increment interest rate hikes. Sources: Official press conferences and statements from ECB & US Fed.</td>
+                        <td><span class="sub-heading">Solid Productivity:</span> Steady TFP growth of 2-3%. Sources: OECD Productivity Statistics, Eurostat, Destatis.<br><span class="sub-heading">Augmented Labor Wins:</span> Real wage growth in high-skill "knowledge worker" sectors. Sources: Destatis quarterly earnings statistics, OECD Average Earnings data.<br><span class="sub-heading">Broad Corporate Adoption:</span> Established non-tech firms report AI-driven margin improvements. Sources: Quarterly/Annual reports of DAX & Euro Stoxx 50 companies.<br><span class="sub-heading">Stable Inequality:</span> Gini coefficient remains stable or improves. Sources: Eurostat ("Income and living conditions"), World Bank.</td>
+                    </tr>
+                </tbody>
+                <caption id="table-1">Table 1: A comparative overview of the three AI future scenarios.</caption>
+            </table>
+            
+            <h3 id="probabilities">Probabilities</h3>
+            <p>The "Balance" scenario seems like a good starting point in late July 2025. However, we see some signs of the "Boom" scenario (e.g., OpenAI's "winner-take-all" dynamic <a href="#source-3">[3]</a>). So let's start with an arbitrary **65% chance of Balance** and a **35% chance of Boom**. We omit the Bust for now, as it's contingent on the Boom. These probabilities are not static; we must update them as new information comes in.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event / Data Point</th>
+                        <th>Impact on P(Supercharged Growth)</th>
+                        <th>Impact on P(Instability)</th>
+                        <th>Rationale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>A major AI lab announces an AI discovered a novel, highly efficient catalyst for green hydrogen.</td>
+                        <td>Strongly Increase</td>
+                        <td>Increase (as S1 is a prerequisite)</td>
+                        <td>This is a direct hit on the "autonomous discovery" thesis.</td>
+                    </tr>
+                    <tr>
+                        <td>US TFP grows at 4% for two consecutive quarters.</td>
+                        <td>Strongly Increase</td>
+                        <td>Increase</td>
+                        <td>This is the clearest macroeconomic signal of the boom starting.</td>
+                    </tr>
+                    <tr>
+                        <td>Global treaty to limit AI compute allocation is signed by the US, China, and EU.</td>
+                        <td>Strongly Decrease</td>
+                        <td>Strongly Decrease</td>
+                        <td>This would invalidate the core driver of the scenario.</td>
+                    </tr>
+                    <tr>
+                        <td>US headline CPI hits 8% while prices for software and electronics fall 10%.</td>
+                        <td>No direct change on P(S1)</td>
+                        <td>Strongly Increase</td>
+                        <td>This is the specific inflation/divergence pattern predicted for S2.</td>
+                    </tr>
+                    <tr>
+                        <td>Major polls show a new populist party focused on a "windfall tax" gaining 15% support.</td>
+                        <td>No direct change on P(S1)</td>
+                        <td>Increase</td>
+                        <td>This is a direct signal of the political backlash from inequality.</td>
+                    </tr>
+                    <tr>
+                        <td>Knowledge worker wages (e.g., for software engineers) rise 10% year-over-year.</td>
+                        <td>Decrease</td>
+                        <td>Decrease</td>
+                        <td>This contradicts the "labor devaluation" thesis, a key part of both scenarios' foundation.</td>
+                    </tr>
+                </tbody>
+                <caption id="table-2">Table 2: Impact of potential events on the probabilities of the "Supercharged Growth" and "Instability" scenarios.</caption>
+            </table>
+
+            <h2 id="winners-losers">Winners and Losers</h2>
+            <p>Supercharged growth, macroeconomic instability and muddling through will have very different economic winners and losers. We need to think about "cui bono": Who (or what) benefits?</p>
+
+            <blockquote class="pull-quote">
+                The biggest winners may not be the AI labs themselves, but the established, high-quality companies that use AI to create an insurmountable competitive advantage.
+            </blockquote>
+        
+            <h3 id="investment-themes">Possible investment themes</h3>
+            
+            <h4>Muddling Through</h4>
+            <p>I'll start with the most likely scenario as per my probability assessment above. Things broadly continue as they are now: P(muddling through)=65%.</p>
+            <p>The core investment philosophy here is to avoid making extreme bets. You don't need to hide in gold (like in a Bust), nor do you need to bet everything on a handful of AI labs winning it all (like in a supercharged, AI dominated growth world). Instead, the goal is to invest in the broad and profitable adoption of AI across the entire economy.</p>
+            <p>A Core-Satellite portfolio structure seems like a good option for this environment.</p>
+            <p><strong>Core Portfolio (Approx. 70-80% of Assets)</strong><br>
+            This forms the stable foundation of your portfolio, designed to capture broad, long-term economic growth which is now modestly accelerated by AI.</p>
+            <ul>
+                <li><strong>Asset Class</strong>: Global Equities & Quality Bonds.</li>
+                <li><strong>Investment Idea</strong>:
+                    <ul>
+                        <li>Broad Market ETFs: Instead of trying to pick the ultimate winner, own the world. A low-cost global equity index fund (like one tracking the MSCI World or FTSE Global All-Cap Index) is the cornerstone. This ensures exposure to all developed and emerging markets as they adopt AI at their own pace.</li>
+                        <li>Investment Grade Bonds: In a "Muddle Through" world, inflation is contained and interest rates are not spiraling to 30%. Bonds revert to their traditional role of providing diversification and income. A mix of government and high-quality corporate bonds will provide stability against normal market corrections.</li>
+                    </ul>
+                </li>
+            </ul>
+        
+            <p><strong>Satellite Portfolio (Approx. 20-30% of Assets)</strong><br>
+            This is where targeted bets on the specific themes of the AI-enhanced economy happen, without taking on too much speculative risk.</p>
+            <ul>
+                <li><strong>Asset Class</strong>: Thematic Equities & Sectors.</li>
+                <li><strong>Investment Idea</strong>:
+                    <ol>
+                        <li><strong>AI Adopters, Not Just Creators</strong>: This is the single most important theme. The biggest winners may not be the AI labs themselves, but the established, high-quality companies that use AI to create an insurmountable competitive advantage.
+                            <ul>
+                                <li><strong>What to look for</strong>: Look for market leaders in "boring" but essential industries that are explicitly investing in AI to improve their operations. Listen to earnings calls for mentions of AI-driven margin improvement, supply chain optimization, and predictive maintenance.</li>
+                                <li><strong>Sectors</strong>: Industrials & Logistics, Healthcare, Financials, Consumer Staples.</li>
+                            </ul>
+                        </li>
+                        <li><strong>The "Picks and Shovels" Ecosystem</strong>: The infrastructure enabling the AI boom seems to be a valid investment, as its demand is more predictable than the success of any single AI model.
+                            <ul>
+                                <li><strong>Sectors</strong>: Semiconductors & Hardware, Energy & Utilities, Cybersecurity.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </li>
+            </ul>
+            
+            <p><strong>What to Avoid in This Scenario</strong></p>
+            <ul>
+                <li>Hyper-Speculative "Pure Play" AI Stocks: Companies with a story but no profits.</li>
+                <li>Concentrated Bets: Going all-in on one or two AI labs or tech giants is unnecessarily risky.</li>
+                <li>Being Overly Defensive: Hiding in cash or gold would mean missing out on significant productivity gains.</li>
+            </ul>
+
+            <h4>Supercharged growth</h4>
+            <p>This is our future in which AI surpasses human cognitive abilities and automates discovery itself, leading to an unprecedented economic boom with annual GDP growth of up to 25%.</p>
+             <ul>
+                <li><strong>Asset Class</strong>: Capital that directly enables AI (e.g. venture capital, private equity).</li>
+                <li><strong>Sectors/Companies</strong>: AI Infrastructure, Scarce Human Services.</li>
+            </ul>
+            
+            <h4>Macroeconomic instability</h4>
+            <p>Flight to safety is the name of the game here. With societal and economic chaos ensuing, real assets will play an important role.</p>
+            <ul>
+                <li><strong>Asset Class</strong>: Real assets that serve as a hedge against inflation and political instability.</li>
+                <li><strong>Sectors/Companies</strong>: Hard Assets (Gold), Inflation-Resistant Sectors (Consumer Staples), Volatility Trading.</li>
+            </ul>
+
+            <h3 id="one-world">One world, one portfolio?</h3>
+            <p>One could get really fancy here and think about how the three scenarios play out for different regions or countries. A few drivers come to mind that could define a geographical fine-tuning. Being from Germany, here's how I think about it:</p>
+            <ul>
+                <li><strong>Regulation</strong>: Europe's AI Act may slow the "Supercharged Growth" scenario compared to the US, making the "Muddle Through" scenario more likely within the EU.</li>
+                <li><strong>Industrial Base</strong>: Germany's strength is in its Mittelstand and high-end manufacturing. These companies are prime candidates to be world-leading "AI Adopters."</li>
+                <li><strong>Currency & Central Bank</strong>: The ECB may be more or less aggressive than the US Federal Reserve. The risk of capital flight from Europe to the US is a real threat in the "Boom" scenario.</li>
+            </ul>
+            <p>Speaking of currencies, the following table summarizes potential impacts on major currencies.</p>
+        
+            <table>
+                <thead>
+                    <tr>
+                        <th>Currency</th>
+                        <th>Scenario 1:<br>Supercharged Growth</th>
+                        <th>Scenario 2:<br>Macroeconomic Instability</th>
+                        <th>Scenario 3:<br>The Muddle Through</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>US Dollar (USD)</strong></td>
+                        <td>Valued Higher (Significantly). The US is home to the primary AI leaders. A global "wall of money" would flow into US tech assets, requiring the purchase of dollars and creating a massive demand-driven rally.</td>
+                        <td>Volatile but likely Valued Higher on a relative basis. In a "risk-off" global crisis, the USD acts as the ultimate safe-haven asset due to the liquidity of its Treasury market, even if its domestic purchasing power is eroded by inflation. Capital flees weaker nations for the perceived safety of the US.</td>
+                        <td>Normal Volatility. The USD might have a slight upward bias due to its tech leadership, but currency values would be driven by traditional factors like interest rate differentials between the Fed and ECB. No extreme, one-way movement.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Euro (EUR)</strong></td>
+                        <td>Valued Lower. The article warns of "capital flight" from countries unable to keep pace. If Europe is perceived as an AI laggard due to regulation or slower innovation, capital will flow out of EUR-denominated assets and into USD, depressing the Euro.</td>
+                        <td>Valued Lower (Significantly). High inflation combined with severe political strife over redistribution would make the Eurozone deeply unattractive to international capital. The risk of a sovereign debt crisis for some member states would re-emerge, punishing the currency.</td>
+                        <td>Normal Volatility. The EUR's value would be determined by the ECB's monetary policy relative to other central banks and the overall economic health of the Eurozone. Its performance would be based on the successful adoption of AI by its industries.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Asian Currencies (e.g., CNY, JPY)</strong></td>
+                        <td>Divergent. The Chinese Yuan (CNY) is the main challenger to the USD. If China keeps pace in the AI race, it could also see massive inflows, strengthening the CNY. The Japanese Yen (JPY), however, would likely weaken as a low-growth currency in a world chasing hyper-growth elsewhere.</td>
+                        <td>Generally Lower. Most Asian currencies would likely fall against the relatively safe-haven USD. The JPY might see some initial safe-haven bids, but this would likely be overwhelmed by the global rush to the dollar.</td>
+                        <td>Driven by Local Factors. The CNY would be driven by China's domestic policy, while the JPY would be driven by the Bank of Japan's interest rate policy. Performance would depend on regional economic health rather than a single global driver.</td>
+                    </tr>
+                </tbody>
+                <caption id="table-3">Table 3: Potential impact of the three AI scenarios on major world currencies.</caption>
+            </table>
+        
+            <p>Metals and commodities would also develop in very different directions.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Commodity</th>
+                        <th>Scenario 1:<br>Supercharged Growth</th>
+                        <th>Scenario 2:<br>Macroeconomic Instability</th>
+                        <th>Scenario 3:<br>The Muddle Through</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Most Influenced<br>Commodities</strong></td>
+                        <td><span class="sub-heading">Winners:</span> Industrial & Energy Metals. (Copper, Uranium, Natural Gas).<br><span class="sub-heading">Loser:</span> Monetary Metals (Gold).</td>
+                        <td><span class="sub-heading">Winners:</span> Monetary Metals & Safe Havens. (Gold & Silver).<br><span class="sub-heading">Volatile:</span> Industrial Metals (Copper).</td>
+                        <td><span class="sub-heading">Winner:</span> "Green Transition" & Tech Metals (Copper, Lithium, Nickel, Uranium).<br><span class="sub-heading">Neutral:</span> Gold.</td>
+                    </tr>
+                </tbody>
+                <caption id="table-4">Table 4: Potential impact of the three AI scenarios on selected commodities.</caption>
+            </table>
+        
+            <p>Finally, one could consider the impact on country risk premia.</p>
+        
+            <table>
+                <thead>
+                    <tr>
+                        <th>Implication</th>
+                        <th>Scenario 1:<br>Supercharged Growth</th>
+                        <th>Scenario 2:<br>Macroeconomic Instability</th>
+                        <th>Scenario 3:<br>The Muddle Through</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Implications</strong></td>
+                        <td><span class="sub-heading">A Great Divergence.</span><br><span class="sub-heading">Winners (Lower Risk, Higher Valuations):</span> The United States (and possibly China).<br><span class="sub-heading">Losers (Higher Risk, Lower Valuations):</span> Nations perceived as laggards (e.g., many in Europe).</td>
+                        <td><span class="sub-heading">Risk Rises Everywhere.</span><br><span class="sub-heading">Relative Winners:</span> Nations with strong rule of law (e.g., Switzerland).<br><span class="sub-heading">Losers:</span> Countries with high debt or political fractures.</td>
+                        <td><span class="sub-heading">Performance Based on Execution.</span><br><span class="sub-heading">Winners:</span> Countries with a strong industrial base for AI adoption (Germany), flexible economies, and vibrant tech ecosystems.</td>
+                    </tr>
+                </tbody>
+                <caption id="table-5">Table 5: Implications for country risk premia across the three AI scenarios.</caption>
+            </table>
+
+            <h3 id="getting-it-done">Getting it done</h3>
+            <p>Before we move into implementation, let me summarize our three scenarios along with the most rudimentary investment ideas for each.</p>
+        
+            <table>
+                <thead>
+                    <tr>
+                        <th>Metric</th>
+                        <th>Scenario 1:<br>Supercharged Growth</th>
+                        <th>Scenario 2:<br>Macroeconomic Instability</th>
+                        <th>Scenario 3:<br>The Muddle Through</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Core Idea</strong></td>
+                        <td>AI achieves autonomy, driving a >20% annual growth explosion.</td>
+                        <td>Chaotic fallout from the growth boom, fueling hyperinflation and social unrest.</td>
+                        <td>AI is an evolutionary tool driving manageable productivity gains (2-4% GDP growth).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Investment Strategy</strong></td>
+                        <td>Concentrated Bet on the Revolution.</td>
+                        <td>Defensive Capital Preservation.</td>
+                        <td>Quality Growth & Diversification.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Specific Investment Ideas</strong></td>
+                        <td><span class="sub-heading">Asset Classes:</span> Private Equity/Venture Capital in AI.<br><span class="sub-heading">Sectors:</span> Foundational AI labs, semiconductors, scarce human services.</td>
+                        <td><span class="sub-heading">Asset Classes:</span> Hard assets.<br><span class="sub-heading">Sectors:</span> Gold, Consumer Staples, Defense, Volatility-focused funds.</td>
+                        <td><span class="sub-heading">Asset Classes:</span> Global Equities, Investment Grade Bonds.<br><span class="sub-heading">Sectors:</span> Core: Broad market ETFs. Satellites: AI adopters & infrastructure.</td>
+                    </tr>
+                </tbody>
+                <caption id="table-6">Table 6: Summary of scenarios and corresponding high-level investment strategies.</caption>
+            </table>
+        
+            <p>I mentioned the absence of a crystal ball earlier. This leads to what's sometimes called a "Barbell Portfolio". Since you cannot be certain which scenario will unfold, a more diversified approach is to build a portfolio that can benefit from the most likely scenario while being hedged for the extremes.</p>
+            
+            <div class="barbell-container">
+                <div class="barbell-weight">
+                    <div>10-15%</div>
+                    <div class="barbell-label">Chaos Hedge</div>
+                </div>
+                <div class="barbell-bar"></div>
+                <div class="barbell-weight large">
+                    <div>70-80%</div>
+                    <div class="barbell-label">Quality Growth</div>
+                </div>
+                <div class="barbell-bar"></div>
+                <div class="barbell-weight">
+                    <div>10-15%</div>
+                    <div class="barbell-label">Hyper-Growth</div>
+                </div>
+            </div>
+            
+            <p>This blended, probability-aware approach is likely more robust than simply picking a single scenario and hoping it comes true.</p>
+        
+            <h2 id="dynamism">Dynamism</h2>
+            <p>But since you're still here, we might as well come back to the concept of updating our beliefs over time and how that would impact portfolio composition.</p>
+            <p>We'll structure this chapter around the three core investment themes derived from our scenarios:</p>
+            <ul>
+                <li>Theme A: Concentrated Hyper-Growth (The "Supercharged Growth" Strategy)</li>
+                <li>Theme B: Chaos & Inflation Hedge (The "Macroeconomic Instability" Strategy)</li>
+                <li>Theme C: Broad-Based Quality Growth (The "Muddle Through" Strategy)</li>
+            </ul>
+
+            <p>Let's start from a fictitious initial state portfolio allocation (as of July 31, 2025). This portfolio reflects a world with high potential for AI but no definitive breakthrough yet. The most likely outcome is a continued "muddle through," but with a good chance for a paradigm shift.</p>
+
+            <p><strong>Initial Scenario Probabilities</strong>:<br>
+            P(Scenario 3: Muddle Through) = 65%<br>
+            P(Scenario 1: Supercharged Growth) = 35%<br>
+            P(Scenario 2: Instability) = 0% (this is contingent on Scenario 1, so its probability is zero until Scenario 1 begins)</p>
+            
+            <p>Based on these probabilities, a logical <strong>portfolio allocation</strong> would be:</p>
+            <ul>
+                <li>Theme C: Broad-Based Quality Growth: 65%</li>
+                <li>Theme A: Concentrated Hyper-Growth: 35%</li>
+                <li>Theme B: Chaos & Inflation Hedge: 0%</li>
+            </ul>
+            <hr style="border-color: #333;">
+
+            <p>After watching this portfolio for 6 boring months without much action, in late 2025, a substantial change occurs, confirming a core tenet of the "Supercharged Growth" scenario.</p>
+            <p><strong>The Event</strong>: A consortium of AI labs announces their latest model has independently made a breakthrough scientific discovery that is immediately verifiable by human experts—for example, designing a novel protein that effectively neutralizes a wide range of viruses. The discovery is published in Nature, with the AI model credited as the primary contributor.</p>
+            <p><strong>The Impact</strong>: This event fundamentally alters the landscape. It proves that AI is no longer just an augmentative tool but an autonomous engine of discovery. The probability of the "Muddle Through" scenario drastically decreases, while the probability of "Supercharged Growth" becomes the base case. As a direct consequence, the market begins to price in the possibility of future disruption, giving the "Instability" scenario its first non-zero probability.</p>
+            <p>This leads to a portfolio re-allocation. The portfolio must be restructured to reflect the new reality.</p>
+            <p><strong>Updated Scenario Probabilities</strong>:<br>
+            P(Scenario 1: Supercharged Growth) = 50% (Now the most likely path)<br>
+            P(Scenario 3: Muddle Through) = 45% (Still possible, but no longer the base case)<br>
+            P(Scenario 2: Instability) = 5% (A small but critical risk that must now be hedged)</p>
+            <p>The new allocation reflects a major strategic shift:</p>
+            <ul>
+                <li>Theme A: Concentrated Hyper-Growth: 50%</li>
+                <li>Theme C: Broad-Based Quality Growth: 45%</li>
+                <li>Theme B: Chaos & Inflation Hedge: 5%</li>
+            </ul>
+        
+            <p>To summarize, here's the before-and-after comparison:</p>
+        
+            <table>
+                <thead>
+                    <tr>
+                        <th>Investment Theme</th>
+                        <th>Allocation BEFORE Event</th>
+                        <th>Allocation AFTER Event</th>
+                        <th>Change</th>
+                        <th>Strategic Rationale for the Shift</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>C: Quality Growth</strong></td>
+                        <td>65%</td>
+                        <td>45%</td>
+                        <td>-20%</td>
+                        <td>Reduced from the core position to a large hedge against the boom failing to fully materialize.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>A: Hyper-Growth</strong></td>
+                        <td>35%</td>
+                        <td>50%</td>
+                        <td>+15%</td>
+                        <td>Elevated from a satellite position to the new core of the portfolio to align with the most likely scenario.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>B: Chaos Hedge</strong></td>
+                        <td>0%</td>
+                        <td>5%</td>
+                        <td>+5%</td>
+                        <td>Initiated a new "insurance" position to hedge against the emerging secondary risks of inflation and instability.</td>
+                    </tr>
+                </tbody>
+                <caption id="table-7">Table 7: Dynamic portfolio allocation adjustment in response to a hypothetical AI breakthrough event.</caption>
+            </table>
+
+            <h2 id="fin">Fin.</h2>
+            <p>This concludes our little "tour de force" about the Great Divergence and how to maneuver it. You're now equipped with a framework to think about scenarios in probabilities and, crucially, in signs that would (in-)validate hypotheses about the future unfolding. We then looked at possible winners and losers, which led to investment themes for each possible future. Combined with the knowledge about probabilities and how to update them, a hypothetical portfolio was constructed and a mechanism to update it based on events was introduced.
+            <br>
+            It's now up to you if you stop here and pat yourself on the back for having learned something or if you want to act on what you learned. Either way, the part about portfolio construction needs to be tailored to your needs, abilities, and risk profile. So that's your mission—should you choose to accept it.</p>
+
+            <div class="poll-placeholder">
+                <p><strong>[Interactive Poll Placeholder]</strong></p>
+                <p>As of today, which scenario do you think is most likely?</p>
+                <p>( ) Boom     ( ) Bust     ( ) Balance</p>
+            </div>
+
+            <p>But this framework is a living document, not a final answer. The most valuable insights often come from collective intelligence.</p>
+            <p><strong>What key indicators are YOU watching?</strong> To share your thoughts and challenge my assumptions, send me an email to dirk(at)investignite.com.</p>
+        
+            <div class="author-box">
+                <img src="Images/author_headshot.jpg" alt="Author Name" class="author-photo">
+                <div class="author-info">
+                    <h4>About the Author</h4>
+                    <p>Dirk Freese is a Managing Director at a large technology consultancy with a passion for understanding the intersection of technology and finance. He focuses on making complex things accessible by developing clear frameworks to navigate technology- and market-shifts. Opinions expressed here are his own and do not represent his employer. You can follow his work on <a href="https://x.com/dirk_freiburg">Twitter/X</a> or connect on <a href="https://www.linkedin.com/in/dirkfreese/">LinkedIn</a>.</p>
+                </div>
+            </div>
+
+            <div class="appendix" id="appendix">
+                <h2>Appendix</h2>
+                <h3>Sources</h3>
+                <ol class="source-list">
+                    <li id="source-1">The Economist. (2025, July 24). <em>The economics of superintelligence</em>. Retrieved from <a href="https://www.economist.com/leaders/2025/07/24/the-economics-of-superintelligence" target="_blank" rel="noopener noreferrer">https://www.economist.com/leaders/2025/07/24/the-economics-of-superintelligence</a></li>
+                    <li id="source-2">Meta AI. (2023, June 13). <em>I-JEPA: The first AI model based on Yann LeCun's vision for more human-like AI</em>. Retrieved from <a href="https://ai.meta.com/blog/i-jepa-yann-lecun-ai-model-efficient-self-supervised-learning/" target="_blank">https://ai.meta.com/blog/i-jepa-yann-lecun-ai-model-efficient-self-supervised-learning/</a></li>
+                    <li id="source-3">PYMNTS.com. (2025, May 15). <em>OpenAI Gaining Market Share in AI Tools, With Google a Far Second</em>. Retrieved from <a href="https://www.pymnts.com/artificial-intelligence/2025/openai-gaining-market-share-in-ai-tools-with-google-a-far-second/" target="_blank">https://www.pymnts.com/artificial-intelligence/2025/openai-gaining-market-share-in-ai-tools-with-google-a-far-second/</a></li>
+                </ol>
+                <h3>Tables</h3>
+                <ul class="table-list">
+                    <li><a href="#table-1">Table 1</a>: A comparative overview of the three AI future scenarios.</li>
+                    <li><a href="#table-2">Table 2</a>: Impact of potential events on scenario probabilities.</li>
+                    <li><a href="#table-3">Table 3</a>: Potential impact of AI scenarios on major world currencies.</li>
+                    <li><a href="#table-4">Table 4</a>: Potential impact of AI scenarios on selected commodities.</li>
+                    <li><a href="#table-5">Table 5</a>: Implications for country risk premia.</li>
+                    <li><a href="#table-6">Table 6</a>: Summary of scenarios and investment strategies.</li>
+                    <li><a href="#table-7">Table 7</a>: Dynamic portfolio allocation adjustment.</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
